@@ -17,5 +17,12 @@ class TestCalculateTimeIntervalDay(unittest.TestCase):
         interval = calculate_time_interval_day(self.date1, self.date2)
         self.assertEqual(interval, 36)
 
+    def test_calculate_time_interval_day_0(self):
+        """
+        Prueba que calcula la diferencia en días de dos fechas
+        """
+        interval = calculate_time_interval_day(self.date1, self.date1)
+        self.assertEqual(interval, 0)
+
 if __name__ == '__main__':
     unittest.main()
