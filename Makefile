@@ -1,8 +1,7 @@
 .PHONY: clean mutation tests
 
 mutation:
-	mutmut run --paths-to-mutate change_state_traps || \
-	mutmut results && exit 1
+	mutmut run --paths-to-mutate change_state_traps 
 
 tests:
 	pytest --cov=change_state_traps --cov-report=term --verbose
