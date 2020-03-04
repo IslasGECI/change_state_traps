@@ -4,4 +4,7 @@ class Trap:
         self.state: str = state
 
 def calculate_effort_from_state(Trampa: Trap):
-    return(Trampa.days)
+    if Trampa.state == "A":
+        return(Trampa.days)
+    else:
+        return(0)
