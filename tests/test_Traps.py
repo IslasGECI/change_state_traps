@@ -18,8 +18,9 @@ class TestTrap(unittest.TestCase):
         Crea variables que se usarán en las pruebas
         """
         ultimo_cambio = datetime.datetime(2020, 5, 17)
-        self.simulado: MockObject = MockObject(effort = 3, state = "A", last_change = ultimo_cambio) 
-        self.trampa: Trap = Trap(effort = 3, state = "A", last_change = ultimo_cambio)
+        argumentos = {"effort" : 3, "state" : "A", "last_change" : ultimo_cambio}
+        self.simulado: MockObject = MockObject(**argumentos) 
+        self.trampa: Trap = Trap(**argumentos)
 
     def test_verifies_effort(self):
         """
