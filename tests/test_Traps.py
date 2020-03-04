@@ -7,6 +7,7 @@ class MockObject:
     def __init__(self, effort: int, state : str, last_change : datetime):
         self.effort = effort
         self.state : str = state
+        self.changed_state : str = "D"
         self.last_change : datetime = last_change
 
 class TestTrap(unittest.TestCase):
@@ -35,6 +36,13 @@ class TestTrap(unittest.TestCase):
         Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`. 
         """
         self.assertEqual(self.trampa.last_change, self.simulado.last_change)
+
+    def test_verifies_changed_state(self):
+        """
+        Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`. 
+        """
+        self.trampa.state = "D"
+        self.assertEqual(self.trampa.state, self.simulado.changed_state)
 
 if __name__ == '__main__':
     unittest.main()
