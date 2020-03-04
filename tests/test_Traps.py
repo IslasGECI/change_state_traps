@@ -22,5 +22,11 @@ class TestTrap(unittest.TestCase):
         """
         self.assertEqual(self.trampa.effort, self.simulado.effort)
 
+    def test_verifies_state(self):
+        """
+        Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`. 
+        """
+        self.assertEqual(self.trampa.state, self.simulado.state)
+
 if __name__ == '__main__':
     unittest.main()
