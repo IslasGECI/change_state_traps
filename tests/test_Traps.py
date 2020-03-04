@@ -5,11 +5,12 @@ from change_state_traps import *
 
 class MockObject:
     def __init__(self, effort: int, state : str, last_change : datetime):
-        self.effort = effort
-        self.state : str = state
-        self.changed_state : str = "D"
-        self.last_change : datetime = last_change
+        self.changed_effort = 6
         self.changed_last_change : datetime = datetime.datetime(2020, 5, 20)
+        self.changed_state : str = "D"
+        self.effort = effort
+        self.last_change : datetime = last_change
+        self.state : str = state
 
 class TestTrap(unittest.TestCase):
     def setUp(self):
@@ -45,6 +46,8 @@ class TestTrap(unittest.TestCase):
         self.trampa.update(new_state = "D", new_date = datetime.datetime(2020, 5, 20))
         self.assertEqual(self.trampa.state, self.simulado.changed_state)
         self.assertEqual(self.trampa.last_change, self.simulado.changed_last_change)
+        self.trampa.update(new_state = "A", new_date = datetime.datetime(2020, 5, 25))
+        self.assertEqual(self.trampa.effort, self.simulado.effort + 5)
 
 if __name__ == '__main__':
     unittest.main()
