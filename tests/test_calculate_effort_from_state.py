@@ -2,6 +2,11 @@ import unittest
 import datetime 
 from change_state_traps import *
 
+class MockObject:
+    def __init__(self, state: str, days: int):
+        self.days: int = days
+        self.state: str = state
+
 class TestCalculateEffortFromState(unittest.TestCase):
     def setUp(self):
         """
@@ -11,9 +16,9 @@ class TestCalculateEffortFromState(unittest.TestCase):
         self.deactivated = "D"
         self.weak = 7
         self.month = 30
-        self.trampa1: Trap = Trap(state = self.activated, days = self.weak)
-        self.trampa2: Trap = Trap(state = self.activated, days = self.month)
-        self.trampa3: Trap = Trap(state = self.deactivated, days = self.month)
+        self.trampa1: MockObject = MockObject(state = self.activated, days = self.weak)
+        self.trampa2: MockObject = MockObject(state = self.activated, days = self.month)
+        self.trampa3: MockObject = MockObject(state = self.deactivated, days = self.month)
 
     def test_calculate_effort(self):
         """
