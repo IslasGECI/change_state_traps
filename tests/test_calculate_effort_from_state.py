@@ -29,5 +29,12 @@ class TestCalculateEffortFromState(unittest.TestCase):
         effort = calculate_effort_from_state(self.trampa2)
         self.assertEqual(effort, self.month)
 
+    def test_calculate_effort_3(self):
+        """
+        Prueba que calcula la diferencia en días de dos fechas
+        """
+        effort = calculate_effort_from_state(self.trampa3)
+        self.assertEqual(effort, 0)
+
 if __name__ == '__main__':
     unittest.main()
