@@ -48,6 +48,8 @@ class TestTrap(unittest.TestCase):
         self.assertEqual(self.trampa.last_change, self.simulado.changed_last_change)
         self.trampa.update(new_state = "A", new_date = datetime.datetime(2020, 5, 25))
         self.assertEqual(self.trampa.effort, self.simulado.effort + 5)
+        self.trampa.update(new_state = "X", new_date = datetime.datetime(2020, 5, 27))
+        self.assertEqual(self.trampa.effort, self.simulado.effort + 7)
 
 if __name__ == '__main__':
     unittest.main()
