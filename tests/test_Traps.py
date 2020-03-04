@@ -43,13 +43,14 @@ class TestTrap(unittest.TestCase):
         """
         Verifica que los objetos de las clase `Trap` se puedan actualizar cuando exista un cambio en su estado.
         """
-        self.trampa.update(new_state = "D", new_date = datetime.datetime(2020, 5, 20))
-        self.assertEqual(self.trampa.state, self.simulado.changed_state)
-        self.assertEqual(self.trampa.last_change, self.simulado.changed_last_change)
-        self.trampa.update(new_state = "A", new_date = datetime.datetime(2020, 5, 25))
-        self.assertEqual(self.trampa.effort, self.simulado.effort + 5)
+        self.trampa.update(new_state = "A", new_date = datetime.datetime(2020, 5, 20))
+        self.assertEqual(self.trampa.state, "A")
+        self.assertEqual(self.trampa.last_change, datetime.datetime(2020, 5, 20))
+        self.assertEqual(self.trampa.effort, self.simulado.effort + 3)
         self.trampa.update(new_state = "X", new_date = datetime.datetime(2020, 5, 27))
-        self.assertEqual(self.trampa.effort, self.simulado.effort + 7)
+        self.assertEqual(self.trampa.effort, self.simulado.effort + 10)
+        self.trampa.update(new_state = "D", new_date = datetime.datetime(2020, 5, 29))
+        self.assertEqual(self.trampa.effort, self.simulado.effort + 10)
 
 if __name__ == '__main__':
     unittest.main()
