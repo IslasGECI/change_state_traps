@@ -9,6 +9,7 @@ class MockObject:
         self.state : str = state
         self.changed_state : str = "D"
         self.last_change : datetime = last_change
+        self.changed_last_change : datetime = datetime.datetime(2020, 5, 20)
 
 class TestTrap(unittest.TestCase):
     def setUp(self):
@@ -37,12 +38,13 @@ class TestTrap(unittest.TestCase):
         """
         self.assertEqual(self.trampa.last_change, self.simulado.last_change)
 
-    def test_verifies_changed_state(self):
+    def test_update_trap(self):
         """
-        Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`. 
+        Verifica que los objetos de las clase `Trap` se puedan actualizar cuando exista un cambio en su estado.
         """
-        self.trampa.state = "D"
+        self.trampa.update(new_state = "D", new_date = datetime.datetime(2020, 5, 20))
         self.assertEqual(self.trampa.state, self.simulado.changed_state)
+        self.assertEqual(self.trampa.last_change, self.simulado.changed_last_change)
 
 if __name__ == '__main__':
     unittest.main()
