@@ -19,6 +19,7 @@ class Trap:
         return(self.__last_change)
 
     def update(self, new_state : str, new_date : datetime):
-        self.__effort = 8
+        delta = new_date - self.__last_change
         self.__last_change = new_date
+        self.__effort = self.__effort + delta.days
         self.__state = new_state
