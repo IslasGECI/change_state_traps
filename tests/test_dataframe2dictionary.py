@@ -21,6 +21,8 @@ class TestRowDataframe2Dictionary(unittest.TestCase):
         self.assertEqual(diccionario['effort'], self.dictionary['effort'][0])
         self.assertEqual(diccionario['state'], self.dictionary['state'][0])
         self.assertEqual(diccionario['last_change'], self.dictionary['last_change'][0])
+        diccionario = row_dataframe2dictionary(self.dataframe.iloc[1])
+        self.assertEqual(diccionario['effort'], self.dictionary['effort'][1])
 
 if __name__ == '__main__':
     unittest.main()
