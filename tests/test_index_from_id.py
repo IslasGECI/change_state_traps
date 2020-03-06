@@ -11,7 +11,7 @@ class TestIndexFromId(unittest.TestCase):
 
     def test_make_dict(self):
         """
-        Verifica que los objetos de las clase `Trap` se construyan de manera correcta e su propiedad `effort`. 
+        Verifica que la función `make_dict_from_id_index` genere el diccionario correcto. 
         """
         dictionary : dict = make_dict_from_id_index(self.index, self.id)
         self.assertEqual(dictionary[self.Ids[0]], self.index[0])
