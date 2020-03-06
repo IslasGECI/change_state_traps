@@ -1,3 +1,3 @@
-def make_dict_from_id_index(id : str, index: int):
-    dictionary : dict = {'id1': 2}
+def make_dict_from_id_index(ids : str, index: int):
+    dictionary : dict = {ids : index}
     return(dictionary)
