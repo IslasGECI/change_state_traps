@@ -29,7 +29,8 @@ class TestIndexFromId(unittest.TestCase):
         Verifica que se generan los diccionarios para inicializar el cambiador
         """
         ids_and_index = dictionary_for_initialization(self.data_frame)
-        self.assertEqual(ids_and_index[self.Ids[1]], self.index[1])
+        self.assertEqual(ids_and_index[self.Ids[1]], 1)
+        self.assertEqual(ids_and_index[self.Ids[0]], 0)
 
 if __name__ == '__main__':
     unittest.main()
