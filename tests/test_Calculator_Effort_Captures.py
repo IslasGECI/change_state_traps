@@ -2,7 +2,6 @@ import unittest
 import datetime 
 from change_state_traps import *
 
-
 class TestCalculatorEffortCaptures(unittest.TestCase):
     def setUp(self):
         """
@@ -17,10 +16,7 @@ class TestCalculatorEffortCaptures(unittest.TestCase):
         """
         Verifica que los objetos de las clase `Calculator_Effort_Captures` se puedan inicializar.
         """
-        self.assertEqual(self.Esfuerzo_Capturas , Calculator_Effort_Captures)
-        self.Esfuerzo_Capturas.init(self.dataframe)
-        self.assertEqual(self.Esfuerzo_Capturas.effort , sum(self.dictionary['effort']))
-
+        self.assertEqual(type(self.Esfuerzo_Capturas) , Calculator_Effort_Captures)
 
 if __name__ == '__main__':
     unittest.main()
