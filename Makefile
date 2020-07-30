@@ -1,13 +1,33 @@
-.PHONY: clean mutation tests
+all: mutants
 
-mutation:
-	mutmut run --paths-to-mutate change_state_traps 
+.PHONY: all clean format install lint mutants tests
+
+repo = change_state_traps
+
+mutants:
+	mutmut run --paths-to-mutate ${repo} 
 
 tests:
-	pytest --cov=change_state_traps --cov-report=term --verbose
+	pytest --cov=${repo} --cov-report=term --verbose
+
+format:
+	black --check --line-length 100 ${repo}
+	black --check --line-length 100 tests
+
+install:
+	pip install --editable .
+
+lint:
+	flake8 --max-line-length 100 ${repo}
+	flake8 --max-line-length 100 tests
+	pylint ${repo}
+	pylint tests
 
 clean:
-	rm --force --recursive $$(find . -name "__pycache__")
-	rm --force --recursive .pytest_cache
-	rm --force .coverage
 	rm --force .mutmut-cache
+	rm --recursive --force ${repo}.egg-info
+	rm --recursive --force ${repo}/__pycache__
+	rm --recursive --force tests/__pycache__
+	rm --recursive --force .pytest_cache
+	rm --force .coverage
+	rm --force coverage.xml
