@@ -60,3 +60,4 @@ def test_update_trap():
     assert trampa.effort == simulado.effort + 3
     trampa.update(new_state="X", new_date=datetime.datetime(2020, 5, 29))
     assert trampa.effort == simulado.effort + 5
+    assert trampa.capture == simulado.capture + 1
