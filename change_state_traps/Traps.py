@@ -2,14 +2,19 @@ import datetime
 
 
 class Trap:
-    def __init__(self, effort: int, state: str, last_change: datetime):
+    def __init__(self, effort: int, capture: int, state: str, last_change: datetime):
         self.__effort: int = effort
+        self.__capture : int = capture
         self.__state: str = state
         self.__last_change: datetime = last_change
 
     @property
     def effort(self):
         return self.__effort
+
+    @property
+    def capture(self):
+        return self.__capture
 
     @property
     def state(self):
