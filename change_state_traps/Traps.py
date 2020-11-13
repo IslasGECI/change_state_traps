@@ -26,7 +26,7 @@ class Trap:
 
     def update(self, new_state: str, new_date: datetime):
         self.__update_effort(new_date)
-        self.__update_capture(new_state)
+        self.__update_when_new_capture(new_state)
         self.__last_change = new_date
         self.__state = new_state
 
@@ -34,9 +34,10 @@ class Trap:
         if self.__was_active():
             self.__add_effort(new_date)
 
-    def __update_capture(self, new_state):
+    def __update_when_new_capture(self, new_state):
         if new_state == "X":
             self.__capture += 1
+            self.__effort += 1
 
     def __was_active(self):
         return self.__state == "A"
