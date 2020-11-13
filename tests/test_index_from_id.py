@@ -18,7 +18,7 @@ class TestIndexFromId(unittest.TestCase):
 
     def test_make_dict(self):
         """
-        Verifica que la función `make_dict_from_id_index` genere el diccionario correcto. 
+        Verifica que la función `make_dict_from_id_index` genere el diccionario correcto.
         """
         dictionary: dict = make_dict_from_id_index(self.Ids[0], self.index[0])
         self.assertEqual(dictionary[self.Ids[0]], self.index[0])

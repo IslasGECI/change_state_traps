@@ -19,29 +19,34 @@ argumentos = {"effort": 3, "capture": 2, "state": "A", "last_change": ultimo_cam
 simulado: MockObject = MockObject(**argumentos)
 trampa: Trap = Trap(**argumentos)
 
+
 def test_verifies_capture():
     """
-    Verifica que los objetos de las clase `Trap` se construyan de manera correcta e su propiedad `effort`. 
+    Verifica que los objetos de las clase `Trap` se construyan de manera correcta e su propiedad `effort`.
     """
     assert trampa.capture == simulado.capture
 
+
 def test_verifies_effort():
     """
-    Verifica que los objetos de las clase `Trap` se construyan de manera correcta e su propiedad `effort`. 
+    Verifica que los objetos de las clase `Trap` se construyan de manera correcta e su propiedad `effort`.
     """
     assert trampa.effort == simulado.effort
 
+
 def test_verifies_state():
     """
-    Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`. 
+    Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`.
     """
     assert trampa.state == simulado.state
 
+
 def test_verifies_last_change():
     """
-    Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`. 
+    Verifica que los objetos de las clase `Trap` se construyan de manera correcta en su propiedad `state`.
     """
     assert trampa.last_change == simulado.last_change
+
 
 def test_update_trap():
     """
@@ -55,5 +60,3 @@ def test_update_trap():
     assert trampa.effort == simulado.effort + 3
     trampa.update(new_state="X", new_date=datetime.datetime(2020, 5, 29))
     assert trampa.effort == simulado.effort + 5
-
-

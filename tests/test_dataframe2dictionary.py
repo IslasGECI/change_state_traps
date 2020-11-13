@@ -18,9 +18,7 @@ class TestRowDataframe2Dictionary(unittest.TestCase):
         self.dataframe: pd.DataFrame = pd.DataFrame.from_dict(self.dictionary)
 
     def test_row_dataframe_change_dictionary(self):
-        """
-
-        """
+        """"""
         diccionario = row_dataframe2dictionary(self.dataframe.iloc[0])
         self.assertEqual(diccionario["effort"], self.dictionary["effort"][0])
         self.assertEqual(diccionario["state"], self.dictionary["state"][0])
