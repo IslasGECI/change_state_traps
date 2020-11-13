@@ -9,5 +9,6 @@ RUN pip install --upgrade pip && pip install \
     pandas \
     pylint \
     pytest-cov \
-    pytest==5.0.1 
+    pytest==6.0.1 \
+    rope
 CMD make
