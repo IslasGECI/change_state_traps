@@ -55,9 +55,11 @@ def test_update_trap():
     trampa.update(new_state="D", new_date=datetime.datetime(2020, 5, 20))
     assert trampa.state == "D"
     assert trampa.last_change == datetime.datetime(2020, 5, 20)
-    assert trampa.effort == simulado.effort + 3
+    esfuerzo_del_17_al_19 = 3
+    assert trampa.effort == simulado.effort + esfuerzo_del_17_al_19
     trampa.update(new_state="A", new_date=datetime.datetime(2020, 5, 27))
-    assert trampa.effort == simulado.effort + 3
+    assert trampa.effort == simulado.effort + esfuerzo_del_17_al_19
+    esfuerzo_del_27_al_29 = 3
     trampa.update(new_state="X", new_date=datetime.datetime(2020, 5, 29))
-    assert trampa.effort == simulado.effort + 5
+    assert trampa.effort == simulado.effort + esfuerzo_del_17_al_19 + esfuerzo_del_27_al_29
     assert trampa.capture == simulado.capture + 1
