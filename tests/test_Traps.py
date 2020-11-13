@@ -1,11 +1,12 @@
-import unittest
 import datetime
+
 from change_state_traps import *
 
 
 class MockObject:
-    def __init__(self, effort: int, state: str, last_change: datetime):
+    def __init__(self, effort: int, capture: int, state: str, last_change: datetime):
         self.changed_effort = 6
+        self.changed_effort = 2
         self.changed_last_change: datetime = datetime.datetime(2020, 5, 20)
         self.changed_state: str = "D"
         self.effort = effort
