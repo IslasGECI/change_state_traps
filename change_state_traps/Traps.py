@@ -25,12 +25,15 @@ class Trap:
         return self.__last_change
 
     def update(self, new_state: str, new_date: datetime):
-        if self.__state == "A":
+        if self.was_active():
             self.__update_effort(new_date)
         if new_state == "X":
             self.__capture += 1
         self.__last_change = new_date
         self.__state = new_state
+
+    def was_active(self):
+        return self.__state == "A"
 
     def __update_effort(self, new_date):
         delta = new_date - self.__last_change
