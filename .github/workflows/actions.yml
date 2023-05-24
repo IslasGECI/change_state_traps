@@ -1,0 +1,39 @@
+name: Tests
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+      - main
+jobs:
+  actions:
+    runs-on: ubuntu-latest
+    env:
+        github_sha: ${{ github.sha }}
+    steps:
+    - name: Copy repository
+      uses: actions/checkout@v2
+    - name: Build image
+      run: docker build --tag islasgeci .
+    - name: Check format
+      run: docker run islasgeci make check
+    - name: Run tests and coverage
+      run: docker run islasgeci make coverage
+    - name: Run mutation testing
+      run: docker run islasgeci make mutants
+    - name: Rename image
+      run: docker tag islasgeci islasgeci/change_state_traps:latest
+    - name: Docker log-in
+      env:
+        docker_username: ${{ secrets.docker_username }}
+        docker_password: ${{ secrets.docker_password }}
+      run: echo "${docker_password}" | docker login --username "${docker_username}" --password-stdin
+    - name: Upload latest image to Docker Hub
+      run: docker push islasgeci/change_state_traps:latest
+    - name: Rename image with tag
+      run: docker tag islasgeci/change_state_traps:latest islasgeci/change_state_traps:${github_sha:0:4}
+    - name: Tag image with hash
+      run: docker push islasgeci/change_state_traps:${github_sha:0:4}
